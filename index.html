@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<script>
+var app = angular.module("tweeterApp", []); 
+app.controller("myCtrl", function($scope) {
+    $scope.tweets = ["This sucks. I want to get out of here.", "New Iphone 8 is awesome.", "New Wonder women movie is really good."];
+    $scope.addTweet = function () {
+        $scope.tweets.push($scope.tweet);
+        $scope.tweet = "";
+    }    
+});
+</script>
+
+<div ng-app="tweeterApp" ng-controller="myCtrl">
+    <p>Write in the text area field to add tweet.</p>
+    <textarea rows="5" cols="40" maxlength="35" ng-model="tweet"></textarea>
+    <br/>
+    <button ng-disabled="!tweet" ng-click="addTweet()">Add Tweet</button>
+    
+    <h2>List of tweets.</h2>
+    <ul>
+        <li ng-repeat="x in tweets">{{x}}</li>
+    </ul>
+    
+    
+    
+</div>
+
+</body>
+</html>
